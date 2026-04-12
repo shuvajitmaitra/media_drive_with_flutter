@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:media_drive_with_flutter/theme/app_theme.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -7,9 +8,10 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final colors = context.appColors;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F6F0),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
@@ -31,13 +33,13 @@ class ProfileScreen extends StatelessWidget {
                       vertical: 8,
                     ),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFDDE8D5),
+                      color: colors.softSurface,
                       borderRadius: BorderRadius.circular(999),
                     ),
                     child: Text(
                       'Creative member',
                       style: theme.textTheme.labelLarge?.copyWith(
-                        color: const Color(0xFF29412F),
+                        color: colorScheme.onSurface,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -49,10 +51,10 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(
+                  gradient: LinearGradient(
                     colors: [
-                      Color(0xFF183A2D),
-                      Color(0xFF2F6B4F),
+                      colors.heroStart,
+                      colors.heroEnd,
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -69,13 +71,13 @@ class ProfileScreen extends StatelessWidget {
                           width: 78,
                           height: 78,
                           decoration: BoxDecoration(
-                            color: const Color(0xFFF2B35B),
+                            color: AppTheme.amber,
                             borderRadius: BorderRadius.circular(24),
                           ),
                           child: const Icon(
                             Icons.person_rounded,
                             size: 42,
-                            color: Color(0xFF183A2D),
+                            color: AppTheme.moss,
                           ),
                         ),
                         const SizedBox(width: 16),
@@ -110,8 +112,8 @@ class ProfileScreen extends StatelessWidget {
                         color: Colors.white.withValues(alpha: 0.12),
                         borderRadius: BorderRadius.circular(24),
                       ),
-                      child: Row(
-                        children: const [
+                      child: const Row(
+                        children: [
                           Expanded(
                             child: _StatTile(
                               value: '128',
@@ -140,7 +142,7 @@ class ProfileScreen extends StatelessWidget {
               Text(
                 'About',
                 style: theme.textTheme.titleLarge?.copyWith(
-                  color: const Color(0xFF1E2A22),
+                  color: colorScheme.onSurface,
                   fontWeight: FontWeight.w800,
                 ),
               ),
@@ -148,7 +150,7 @@ class ProfileScreen extends StatelessWidget {
               Text(
                 'Building thoughtful interfaces, shaping design systems, and experimenting with polished Flutter interactions.',
                 style: theme.textTheme.bodyLarge?.copyWith(
-                  color: const Color(0xFF55635A),
+                  color: colors.bodyMuted,
                   height: 1.5,
                 ),
               ),
@@ -179,13 +181,13 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: theme.cardColor,
                   borderRadius: BorderRadius.circular(28),
-                  boxShadow: const [
+                  boxShadow: [
                     BoxShadow(
-                      color: Color(0x14000000),
+                      color: colors.shadowColor,
                       blurRadius: 20,
-                      offset: Offset(0, 8),
+                      offset: const Offset(0, 8),
                     ),
                   ],
                 ),
@@ -196,27 +198,25 @@ class ProfileScreen extends StatelessWidget {
                       'Quick actions',
                       style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w800,
-                        color: const Color(0xFF1E2A22),
+                        color: colorScheme.onSurface,
                       ),
                     ),
                     const SizedBox(height: 16),
-                    const _ActionRow(
+                    _ActionRow(
                       icon: Icons.folder_copy_outlined,
                       title: 'View portfolio',
                       subtitle: 'Browse recent case studies and experiments',
+                      iconBackground: colors.softSurface,
                     ),
-                    const Divider(height: 28),
-                    const _ActionRow(
+                    Divider(height: 28, color: theme.dividerColor),
+                    _ActionRow(
                       icon: Icons.mail_outline_rounded,
                       title: 'Contact',
                       subtitle: 'Start a conversation about collaboration',
+                      iconBackground: colors.softSurface,
                     ),
-                    const Divider(height: 28),
-                    const _ActionRow(
-                      icon: Icons.settings_outlined,
-                      title: 'Preferences',
-                      subtitle: 'Update profile details and app behavior',
-                    ),
+                    Divider(height: 28, color: theme.dividerColor),
+                    const _ThemeToggleRow(),
                   ],
                 ),
               ),
@@ -227,13 +227,6 @@ class ProfileScreen extends StatelessWidget {
                   onPressed: () {
                     context.pop();
                   },
-                  style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xFF183A2D),
-                    padding: const EdgeInsets.symmetric(vertical: 18),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
                   child: const Text('Back to home'),
                 ),
               ),
@@ -299,7 +292,7 @@ class _InfoCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: theme.cardColor,
         borderRadius: BorderRadius.circular(24),
       ),
       child: Column(
@@ -314,7 +307,7 @@ class _InfoCard extends StatelessWidget {
             ),
             child: Icon(
               icon,
-              color: const Color(0xFF1E2A22),
+              color: AppTheme.ink,
             ),
           ),
           const SizedBox(height: 14),
@@ -322,14 +315,13 @@ class _InfoCard extends StatelessWidget {
             title,
             style: theme.textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.w800,
-              color: const Color(0xFF1E2A22),
             ),
           ),
           const SizedBox(height: 6),
           Text(
             subtitle,
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: const Color(0xFF55635A),
+              color: context.appColors.bodyMuted,
               height: 1.4,
             ),
           ),
@@ -344,11 +336,13 @@ class _ActionRow extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.subtitle,
+    required this.iconBackground,
   });
 
   final IconData icon;
   final String title;
   final String subtitle;
+  final Color iconBackground;
 
   @override
   Widget build(BuildContext context) {
@@ -360,12 +354,12 @@ class _ActionRow extends StatelessWidget {
           width: 52,
           height: 52,
           decoration: BoxDecoration(
-            color: const Color(0xFFE9F0E5),
+            color: iconBackground,
             borderRadius: BorderRadius.circular(18),
           ),
           child: Icon(
             icon,
-            color: const Color(0xFF183A2D),
+            color: AppTheme.moss,
           ),
         ),
         const SizedBox(width: 14),
@@ -377,14 +371,13 @@ class _ActionRow extends StatelessWidget {
                 title,
                 style: theme.textTheme.titleSmall?.copyWith(
                   fontWeight: FontWeight.w800,
-                  color: const Color(0xFF1E2A22),
                 ),
               ),
               const SizedBox(height: 4),
               Text(
                 subtitle,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: const Color(0xFF55635A),
+                  color: context.appColors.bodyMuted,
                   height: 1.35,
                 ),
               ),
@@ -392,10 +385,65 @@ class _ActionRow extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 12),
-        const Icon(
+        Icon(
           Icons.arrow_forward_ios_rounded,
           size: 16,
-          color: Color(0xFF7E8B82),
+          color: theme.colorScheme.onSurface.withValues(alpha: 0.45),
+        ),
+      ],
+    );
+  }
+}
+
+class _ThemeToggleRow extends StatelessWidget {
+  const _ThemeToggleRow();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colors = context.appColors;
+    final isDarkMode = context.themeMode == ThemeMode.dark;
+
+    return Row(
+      children: [
+        Container(
+          width: 52,
+          height: 52,
+          decoration: BoxDecoration(
+            color: colors.softSurface,
+            borderRadius: BorderRadius.circular(18),
+          ),
+          child: Icon(
+            isDarkMode ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
+            color: colors.iconAccent,
+          ),
+        ),
+        const SizedBox(width: 14),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Theme mode',
+                style: theme.textTheme.titleSmall?.copyWith(
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                isDarkMode ? 'Dark palette enabled' : 'Light palette enabled',
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: colors.bodyMuted,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Switch.adaptive(
+          value: isDarkMode,
+          onChanged: (_) {
+            context.toggleTheme();
+          },
         ),
       ],
     );
