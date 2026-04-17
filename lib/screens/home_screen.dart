@@ -1,30 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:media_drive_with_flutter/routes/routes.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    const name = 'shuvajit';
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home Screen"),
+        title: const Text('Home Screen'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              child: Text('Profile'),
-              onPressed: () => context.go('/profile'),
+              onPressed: () => context.go(AppRoutePaths.profile),
+              child: const Text('Profile Screen'),
             ),
             ElevatedButton(
-              child: Text('Profile=>Library'),
-              onPressed: () => context.push('/profile/library'),
+              onPressed: () => context.go(AppRoutePaths.profileDetails(name)),
+              child: const Text('Profile Details'),
             ),
             ElevatedButton(
-              child: Text('Profile=>Library=>Contact'),
-              onPressed: () => context.go('/profile/library/contact'),
+              onPressed: () => context.push(AppRoutePaths.library),
+              child: const Text('Open Library'),
+            ),
+            ElevatedButton(
+              onPressed: () => context.push(AppRoutePaths.contact),
+              child: const Text('Open Contact'),
+            ),
+            ElevatedButton(
+              onPressed: () => context.push(AppRoutePaths.media),
+              child: const Text('Open Media'),
             ),
           ],
         ),

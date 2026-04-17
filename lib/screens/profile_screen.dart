@@ -1,19 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:media_drive_with_flutter/routes/routes.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  final String? name;
+  const ProfileScreen({super.key, this.name});
 
   @override
   Widget build(BuildContext context) {
+    final title = name == null ? 'Profile Screen' : 'Profile Screen $name';
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("ProfileScreen"),
+        title: Text(title),
       ),
       body: Center(
-        child: ElevatedButton(
-          child: Text('Profile/Contact'),
-          onPressed: () => context.go('/profile/library/contact'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () => context.push(AppRoutePaths.library),
+              child: const Text('Open Library'),
+            ),
+            ElevatedButton(
+              onPressed: () => context.push(AppRoutePaths.contact),
+              child: const Text('Open Contact'),
+            ),
+          ],
         ),
       ),
     );
