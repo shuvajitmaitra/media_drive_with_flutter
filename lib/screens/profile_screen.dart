@@ -9,6 +9,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final title = name == null ? 'Profile Screen' : 'Profile Screen $name';
+    const libraryParam = 'default';
 
     return Scaffold(
       appBar: AppBar(
@@ -19,11 +20,11 @@ class ProfileScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => context.push(AppRoutePaths.library),
+              onPressed: () => context.push(AppRoutePaths.library(libraryParam)),
               child: const Text('Open Library'),
             ),
             ElevatedButton(
-              onPressed: () => context.push(AppRoutePaths.contact),
+              onPressed: () => context.push(AppRoutePaths.contact(libraryParam)),
               child: const Text('Open Contact'),
             ),
           ],

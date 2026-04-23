@@ -38,12 +38,15 @@ final GoRouter appRouter = GoRouter(
           builder: (context, state) => const PortfolioScreen(),
         ),
         GoRoute(
-          path: '/library',
-          builder: (context, state) => const LibraryScreen(),
+          path: '/library/:test',
+          builder: (context, state) =>
+              LibraryScreen(test: state.pathParameters['test']),
           routes: [
             GoRoute(
               path: 'contact',
-              builder: (context, state) => const ContactScreen(),
+              builder: (context, state) => ContactScreen(
+                params: state.pathParameters['test'],
+              ),
             ),
           ],
         ),

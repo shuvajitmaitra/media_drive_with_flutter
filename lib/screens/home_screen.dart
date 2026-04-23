@@ -8,6 +8,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const name = 'shuvajit';
+    const libraryParam = 'default';
 
     return Scaffold(
       appBar: AppBar(
@@ -26,11 +27,11 @@ class HomeScreen extends StatelessWidget {
               child: const Text('Profile Details'),
             ),
             ElevatedButton(
-              onPressed: () => context.push(AppRoutePaths.library),
+              onPressed: () => context.push(AppRoutePaths.library(libraryParam)),
               child: const Text('Open Library'),
             ),
             ElevatedButton(
-              onPressed: () => context.push(AppRoutePaths.contact),
+              onPressed: () => context.push(AppRoutePaths.contact(libraryParam)),
               child: const Text('Open Contact'),
             ),
             ElevatedButton(

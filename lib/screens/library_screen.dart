@@ -3,10 +3,13 @@ import 'package:go_router/go_router.dart';
 import 'package:media_drive_with_flutter/routes/routes.dart';
 
 class LibraryScreen extends StatelessWidget {
-  const LibraryScreen({super.key});
+  final String? test;
+  const LibraryScreen({super.key, this.test});
 
   @override
   Widget build(BuildContext context) {
+    final libraryParam = test ?? 'default';
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Library Screen'),
@@ -15,8 +18,9 @@ class LibraryScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text('Library param: $libraryParam'),
             ElevatedButton(
-              onPressed: () => context.push(AppRoutePaths.contact),
+              onPressed: () => context.push(AppRoutePaths.contact(libraryParam)),
               child: const Text('Open Contact'),
             ),
             ElevatedButton(

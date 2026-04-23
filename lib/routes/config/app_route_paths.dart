@@ -4,9 +4,9 @@ class AppRoutePaths {
   static const home = '/';
   static const profile = '/profile';
   static const portfolio = '/portfolio';
-  static const library = '/library';
-  static const contact = '/library/contact';
   static const media = '/media';
 
+  static String library([String test = 'default']) => '/library/$test';
+  static String contact([String test = 'default']) => '${library(test)}/contact';
   static String profileDetails(String name) => '$profile/details/$name';
 }

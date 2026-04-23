@@ -3,7 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:media_drive_with_flutter/routes/routes.dart';
 
 class ContactScreen extends StatelessWidget {
-  const ContactScreen({super.key});
+  final String? params;
+  const ContactScreen({super.key, this.params});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +16,7 @@ class ContactScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(params!),
             ElevatedButton(
               onPressed: () => GoRouter.of(context).go(AppRoutePaths.home),
               child: const Text('Go To Home'),
