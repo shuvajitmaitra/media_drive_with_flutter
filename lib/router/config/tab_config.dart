@@ -1,4 +1,4 @@
-import 'package:media_drive_with_flutter/router/config/routes_name.dart';
+import 'package:portfolio/router/config/routes_name.dart';
 
 enum AppTab { home, skills, experiences, contact, profile }
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:media_drive_with_flutter/router/config/tab_config.dart';
+import 'package:portfolio/router/config/tab_config.dart';
 
 class AppShell extends StatelessWidget {
   final Widget child;

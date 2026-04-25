@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
-import 'package:media_drive_with_flutter/router/app_shell.dart';
-import 'package:media_drive_with_flutter/router/config/routes_name.dart';
-import 'package:media_drive_with_flutter/screens/home/home_screen.dart';
+import 'package:portfolio/router/app_shell.dart';
+import 'package:portfolio/router/config/routes_name.dart';
+import 'package:portfolio/screens/home/home_screen.dart';
 
 final appRouter = GoRouter(
   initialLocation: RoutesName.home,

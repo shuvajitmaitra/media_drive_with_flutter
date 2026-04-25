@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:media_drive_with_flutter/router/config/routes_name.dart';
+import 'package:portfolio/router/config/routes_name.dart';
 
 class ContactScreen extends StatelessWidget {
   final String? params;
