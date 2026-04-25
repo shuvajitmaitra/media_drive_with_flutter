@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:media_drive_with_flutter/routes/routes.dart';
+import 'package:media_drive_with_flutter/router/app_router.dart';
 
 void main() {
   runApp(const MainApp());
