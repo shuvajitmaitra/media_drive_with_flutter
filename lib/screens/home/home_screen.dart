@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () => context.push(RoutesName.skills),
-              child: const Text('Open Media'),
+              child: const Text('Open Skills'),
             ),
           ],
         ),
